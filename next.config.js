@@ -1,13 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // For external packages in server components
   experimental: {
-    serverComponentsExternalPackages: ['pdf-parse'],
+    serverComponentsExternalPackages: ['pdf-parse', 'tesseract.js'],
   },
-  
-  // Basic optimizations
-  compress: true,
-  poweredByHeader: false,
+  // Increase timeout if needed for large files
+  serverExternalPackages: ['pdf-parse'],
 }
 
 module.exports = nextConfig
