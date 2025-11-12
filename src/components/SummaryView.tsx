@@ -39,7 +39,7 @@ export const SummaryView: React.FC<SummaryViewProps> = ({ summaryData, fileName 
           <div>
             <h2 className="text-2xl font-bold text-gray-900 mb-2">Document Summary</h2>
                         <p className="text-gray-600">
-              File: <span className="font-medium">{filename}</span> • 
+              File: <span className="font-medium">{fileName}</span> • 
               Summary: <span className="font-medium">{getLengthLabel(summaryData.summaryLength)}</span>
               {/* ADDED: Processing method display */}
               {(summaryData as any).processingMethod && (
