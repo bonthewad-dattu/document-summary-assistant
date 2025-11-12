@@ -38,12 +38,12 @@ export const SummaryView: React.FC<SummaryViewProps> = ({ summaryData, fileName 
         <div className="flex justify-between items-start">
           <div>
             <h2 className="text-2xl font-bold text-gray-900 mb-2">Document Summary</h2>
-            <p className="text-gray-600">
-              File: <span className="font-medium">{fileName}</span> • 
+                        <p className="text-gray-600">
+              File: <span className="font-medium">{filename}</span> • 
               Summary: <span className="font-medium">{getLengthLabel(summaryData.summaryLength)}</span>
               {/* ADDED: Processing method display */}
-              {summaryData.processingMethod && (
-                <> • Processing: <span className="font-medium">{summaryData.processingMethod}</span></>
+              {(summaryData as any).processingMethod && (
+                <> • Processing: <span className="font-medium">{(summaryData as any).processingMethod}</span></>
               )}
             </p>
           </div>
