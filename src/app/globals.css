@@ -1,0 +1,413 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Root variables for easy theme adjustment */
+:root {
+  --primary-start: #6a11cb;
+  --primary-end: #2575fc;
+  --secondary-start: #fc466b;
+  --secondary-end: #3f5efb;
+  --background-dark: #1e1e2f;
+  --background-light: #f5f7fa;
+  --text-primary: #f9fafb;
+  --text-secondary: #b0bec5;
+  --border-soft: rgba(255, 255, 255, 0.15);
+  --shadow-soft: rgba(0, 0, 0, 0.25);
+}
+
+/* NEW: Updated background with deep blue theme and advanced animations */
+body, html {
+  height: 100%;
+  margin: 0;
+  overflow-x: hidden;
+}
+
+.bg-animated-gradient {
+  background: 
+    /* Base deep blue gradient */
+    linear-gradient(135deg, #0d1b2a 0%, #1b263b 25%, #415a77 50%, #1b263b 75%, #0d1b2a 100%),
+    /* Animated gradient overlay */
+    linear-gradient(270deg, #1e3a8a, #3b82f6, #60a5fa, #1e40af);
+  background-size: 
+    100% 100%,
+    400% 400%;
+  background-blend-mode: overlay;
+  animation: 
+    gradientMove 20s ease infinite,
+    subtlePulse 8s ease-in-out infinite;
+  min-height: 100vh;
+  color: #ffffff;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  position: relative;
+}
+
+/* NEW: Add floating particles effect */
+.bg-animated-gradient::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(circle at 20% 30%, rgba(59, 130, 246, 0.3) 2px, transparent 4px),
+    radial-gradient(circle at 80% 70%, rgba(96, 165, 250, 0.2) 1px, transparent 3px),
+    radial-gradient(circle at 40% 80%, rgba(30, 64, 175, 0.25) 2px, transparent 4px),
+    radial-gradient(circle at 60% 20%, rgba(37, 99, 235, 0.2) 1px, transparent 3px);
+  background-size: 
+    400px 400px,
+    300px 300px,
+    500px 500px,
+    350px 350px;
+  animation: particleFloat 25s linear infinite;
+  z-index: 0;
+}
+
+/* NEW: Enhanced gradient animation */
+@keyframes gradientMove {
+  0% { 
+    background-position: 
+      0% 0%,
+      0% 50%; 
+  }
+  50% { 
+    background-position: 
+      0% 0%,
+      100% 50%; 
+  }
+  100% { 
+    background-position: 
+      0% 0%,
+      0% 50%; 
+  }
+}
+
+/* NEW: Subtle pulse effect */
+@keyframes subtlePulse {
+  0%, 100% { 
+    opacity: 1; 
+  }
+  50% { 
+    opacity: 0.95; 
+  }
+}
+
+/* NEW: Floating particles animation */
+@keyframes particleFloat {
+  0% {
+    transform: translateY(0px) translateX(0px) rotate(0deg);
+  }
+  33% {
+    transform: translateY(-30px) translateX(20px) rotate(120deg);
+  }
+  66% {
+    transform: translateY(20px) translateX(-15px) rotate(240deg);
+  }
+  100% {
+    transform: translateY(0px) translateX(0px) rotate(360deg);
+  }
+}
+
+/* NEW: Enhanced page load animation */
+.page-entrance {
+  animation: pageEntrance 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  opacity: 0;
+  transform: translateY(30px) scale(0.95);
+}
+
+@keyframes pageEntrance {
+  0% {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+    filter: blur(10px);
+  }
+  70% {
+    opacity: 0.8;
+    transform: translateY(-5px) scale(1.02);
+    filter: blur(5px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+/* NEW: Staggered animation for child elements */
+.stagger-animation > * {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: staggerItem 0.8s ease forwards;
+}
+
+.stagger-animation > *:nth-child(1) { animation-delay: 0.1s; }
+.stagger-animation > *:nth-child(2) { animation-delay: 0.2s; }
+.stagger-animation > *:nth-child(3) { animation-delay: 0.3s; }
+.stagger-animation > *:nth-child(4) { animation-delay: 0.4s; }
+.stagger-animation > *:nth-child(5) { animation-delay: 0.5s; }
+.stagger-animation > *:nth-child(6) { animation-delay: 0.6s; }
+
+@keyframes staggerItem {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* NEW: Logo/text entrance animation */
+.logo-entrance {
+  animation: logoReveal 1.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  opacity: 0;
+  transform: scale(0.8) rotate(-5deg);
+}
+
+@keyframes logoReveal {
+  0% {
+    opacity: 0;
+    transform: scale(0.8) rotate(-5deg);
+    filter: blur(15px);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.05) rotate(2deg);
+    filter: blur(5px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+    filter: blur(0);
+  }
+}
+
+/* Fade in animation for front page content */
+.fade-in-wrapper {
+  animation: fadeInUp 1.2s ease forwards;
+  opacity: 0;
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0; 
+    transform: translateY(15px);
+  }
+  100% {
+    opacity: 1; 
+    transform: translateY(0);
+  }
+}
+
+/* Main container styling for content */
+.main-container {
+  max-width: 960px;
+  margin: 3rem auto;
+  background: rgba(13, 27, 42, 0.85);
+  border-radius: 1.5rem;
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  border: 1.5px solid rgba(59, 130, 246, 0.3);
+  backdrop-filter: blur(20px);
+  padding: 2rem 3rem;
+  position: relative;
+  overflow: hidden;
+  color: var(--text-primary);
+  z-index: 1;
+}
+
+/* Enhanced glowing border animation */
+.main-container::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  border-radius: 1.75rem;
+  background: linear-gradient(45deg, #1e40af, #3b82f6, #60a5fa, #1e40af, #3b82f6);
+  background-size: 400% 400%;
+  animation: glowingBorder 6s ease infinite;
+  filter: blur(8px);
+  opacity: 0.6;
+  z-index: -1;
+}
+
+/* Glowing border keyframes */
+@keyframes glowingBorder {
+  0%, 100% { 
+    background-position: 0% 50%; 
+    opacity: 0.6;
+  }
+  50% { 
+    background-position: 100% 50%; 
+    opacity: 0.8;
+  }
+}
+
+/* Custom buttons with motion and shine */
+.btn-primary {
+  background: linear-gradient(45deg, var(--primary-start), var(--primary-end));
+  color: white;
+  padding: 14px 28px;
+  font-weight: 700;
+  border-radius: 0.75rem;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 5px 15px rgba(37, 99, 235, 0.6);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Button shine animation */
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 50%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.25);
+  transform: skewX(-25deg);
+  transition: left 0.5s ease;
+}
+
+.btn-primary:hover::before {
+  left: 125%;
+  transition: left 1s ease;
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(37, 99, 235, 0.9);
+}
+
+/* Upload zone with interactive animation */
+.upload-zone {
+  border: 3px dashed rgba(59, 130, 246, 0.4);
+  border-radius: 1rem;
+  padding: 3rem;
+  background: rgba(30, 41, 59, 0.6);
+  text-align: center;
+  font-weight: 600;
+  color: var(--text-secondary);
+  cursor: pointer;
+  position: relative;
+  transition: all 0.5s ease;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+}
+
+.upload-zone:hover {
+  background-color: rgba(30, 41, 59, 0.8);
+  border-color: var(--primary-end);
+  transform: translateY(-4px);
+  box-shadow: 0 20px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Upload zone shimmer effect when active */
+.upload-zone.drag-over {
+  border-color: var(--secondary-start);
+  background: linear-gradient(135deg, rgba(30, 64, 175, 0.3), rgba(59, 130, 246, 0.3));
+  transform: scale(1.05);
+  box-shadow: 0 25px 35px rgba(37, 99, 235, 0.4);
+  animation: pulseGlow 2s infinite alternate;
+}
+
+/* Pulse glow for drag over */
+@keyframes pulseGlow {
+  0% { 
+    box-shadow: 0 20px 25px rgba(37, 99, 235, 0.3); 
+  }
+  100% { 
+    box-shadow: 0 30px 40px rgba(37, 99, 235, 0.6); 
+  }
+}
+
+/* Upload spinner with smooth rotation */
+.uploading-spinner {
+  border: 4px solid rgba(200, 200, 200, 0.4);
+  border-top: 4px solid #3b82f6;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  animation: spin 1.2s linear infinite;
+  margin: 1rem auto;
+}
+
+@keyframes spin {
+  0% {transform: rotate(0deg);}
+  100% {transform: rotate(360deg);}
+}
+
+/* Advanced shimmer loading effect */
+.shimmer {
+  animation: shimmer 2.5s infinite linear;
+  background: linear-gradient(
+    90deg,
+    rgba(59, 130, 246, 0.1) 25%,
+    rgba(96, 165, 250, 0.2) 50%,
+    rgba(59, 130, 246, 0.1) 75%
+  );
+  background-size: 300% 100%;
+  border-radius: 12px;
+  height: 22px;
+  margin: 1rem 0;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -300% 0;
+  }
+  100% {
+    background-position: 300% 0;
+  }
+}
+
+/* Scrollbar with glow effect */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(13, 27, 42, 0.8);
+  border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #1e40af, #3b82f6);
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+  transition: background 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #3b82f6, #60a5fa);
+  box-shadow: 0 0 20px rgba(96, 165, 250, 0.7);
+}
+
+/* Focus outlines for accessibility */
+.upload-zone:focus,
+.btn-primary:focus {
+  outline: 3px solid #3b82f6;
+  outline-offset: 3px;
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  .main-container {
+    margin: 1rem;
+    padding: 1.5rem 2rem;
+    border-radius: 1rem;
+  }
+  .upload-zone {
+    padding: 2rem;
+  }
+  .btn-primary {
+    padding: 12px 24px;
+  }
+}
